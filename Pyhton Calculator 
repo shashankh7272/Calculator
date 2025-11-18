@@ -1,0 +1,45 @@
+```python name=calculator.py url=https://github.com/shashankh7272/Calculator/blob/main/calculator.py
+print("Simple Calculator - enter 'q' at any prompt to quit")
+def get_number(prompt):
+    while True:
+        s = input(prompt)
+        if s.lower() == 'q':
+            return None
+        try:
+            return float(s)
+        except:
+            print("Invalid number, try again.")
+def get_operator():
+    while True:
+        op = input("Enter operator (+, -, *, /) or 'q' to quit: ").strip()
+        if op.lower() == 'q':
+            return None
+        if op in ('+','-','*','/'):
+            return op
+        print("Invalid operator.")
+while True:
+    a = get_number("Enter first number: ")
+    if a is None:
+        break
+    op = get_operator()
+    if op is None:
+        break
+    b = get_number("Enter second number: ")
+    if b is None:
+        break
+    if op == '+':
+        res = a + b
+    elif op == '-':
+        res = a - b
+    elif op == '*':
+        res = a * b
+    else:
+        if b == 0:
+            print("Error: Division by zero.")
+            continue
+        res = a / b
+    if isinstance(res, float) and res.is_integer():
+        res = int(res)
+    print("Result:", res)
+print("Goodbye!")
+```
